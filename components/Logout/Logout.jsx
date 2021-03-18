@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './logout.module.scss';
 
 export const Logout = () => {
-  const user = useSelector((state) => state.state.user);
+  const { name } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    dispatch();
-  };
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   dispatch({ name: '', email: '', password: '', loggedIn: false });
+  // };
 
   return (
     <div>
@@ -18,10 +18,17 @@ export const Logout = () => {
         Welcome{' '}
         <span>
           Udochi
-          {user.name}
+          {name}
         </span>
       </h1>
-      <button type="submit" className={styles.logout__btn} onClick={(e) => handleLogout(e)}>
+      <button
+        type="submit"
+        className={styles.logout__btn}
+        onClick={(e) => {
+          e.preventDefault();
+          dispatch({ name: '', email: '', password: '', loggedIn: false });
+        }}
+      >
         Logout
       </button>
     </div>

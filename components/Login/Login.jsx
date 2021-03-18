@@ -6,18 +6,16 @@ export const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const loggedIn = true;
   const dispatch = useDispatch();
   console.log(dispatch);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
-      user: {
-        name,
-        email,
-        password,
-        loggedIn: true,
-      },
+      name,
+      email,
+      password,
+      loggedIn,
     });
   };
 

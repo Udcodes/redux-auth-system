@@ -1,25 +1,26 @@
 import * as types from '../types';
 
 const initialState = {
-  user: { name: '', email: '', password: '', loggedIn: false },
+  name: '',
+  email: '',
+  password: '',
+  loggedIn: false,
 };
 
-export const userReducers = (state = initialState.user, action) => {
+export const userReducers = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_USER:
+    case types.LOGIN_USER:
       return {
         ...state,
-        user: {
-          state: action.payload,
-        },
-        // logout: () => {
-        //   state = null;
-        // },
+        name: state.name,
+        email: state.email,
+        password: state.password,
+        loggedIn: state.loggedIn,
       };
-    // return {
-    //   ...state,
-    //   user: action.payload,
-    // };
+    case types.LOGOUT_USER:
+      return {
+        ...state,
+      };
 
     default:
       return { ...state };
